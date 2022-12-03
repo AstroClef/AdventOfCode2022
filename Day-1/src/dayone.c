@@ -1,35 +1,47 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
+#include <string.h>
 
-//provides some more, almost unnecessary, readability - *cough* Line 24 *cough*
+#include "../../lib/astroclef-lib.h"
+#include "../../lib/astroclef-aocdemo-helpers.h"
+
+//Imporving Readability
 typedef enum {FIRST, SECOND, THIRD} ranks;
+bool detailedModeActive = false;
 
 //Initialize Variables
 char fileItem[7];
 
-const int TOP_POCKETS = 3;
+#define TOP_POCKETS 3
 int topPockets[TOP_POCKETS];
-int top_pockets_count = TOP_POCKETS - 1;
+int top_pockets_count;
 
 int activePocket = 0;
 
 //Initialize Helper Functions
-void readFileForNumbers(char* filename);
+void readFileForNumbers(string filename);
 int sumCaloriesInTopPockets();
+string get_string(string prompt);
+
 
 //------------------ ENTRY POINT --------------------
 int main(void)
 {
+    detailedModeActive = modeCheck();
+    top_pockets_count = TOP_POCKETS - 1;
     readFileForNumbers("input.txt");
     printf("First: %i, Second: %i, Third: %i\n", topPockets[FIRST], topPockets[SECOND], topPockets[THIRD]);
     printf("Total Calories: %i\n", sumCaloriesInTopPockets());
+    strcasecmp("a", "A");
     return 0;
 }
 
 //---------------- HELPER FUNCTIONS -----------------
+// -- Program Initialization
 
 // -- File Interaction
-void readFileForNumbers(char* filename)
+void readFileForNumbers(string filename)
 {
     //Open file and validate that it exists.
     FILE *input_file = fopen(filename, "r");
