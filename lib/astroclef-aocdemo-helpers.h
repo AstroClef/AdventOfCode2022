@@ -10,6 +10,7 @@ Description:
 #define ASTROCLEF_AOCDEMO_HELPERS_H
 
 #include <string.h>
+#include <stdbool.h>
 #include "astroclef-lib.h"
 
 /* MODE CHECK - Retruns a Boolean value (0 for False; 1 for True)
